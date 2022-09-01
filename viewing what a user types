@@ -1,0 +1,5 @@
+First we need to identify the PID process that the user is using 
+
+truss -f -w all -t write -p $PID
+
+though its messy it still allows you to spy what the a user/process is doing.
