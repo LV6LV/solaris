@@ -9,6 +9,10 @@ ps -ef -o ppid,pid,tty,comm
 To spy on what the process is doing:
 ```
 truss -f -w all -t write -p $PID
+
+truss -f -w all -t write -T -o trace.out -r -v -p $pid
+
+
 ```
 This allows you to spy what the a user/process is doing.
 
