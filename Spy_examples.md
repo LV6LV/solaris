@@ -12,8 +12,11 @@ truss -f -w all -t write -p $PID
 
 truss -f -w all -t write -T -o trace.out -r -v -p $pid
 
-
 ```
+```
+mount -F lofs /tmp /proc/PID
+```
+
 This allows you to spy what the a user/process is doing.
 
 ```
