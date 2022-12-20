@@ -1,0 +1,30 @@
+# Include the utmpx library
+. /usr/include/utmpx.h
+
+# Set the path to the utmp file
+utmpname("/var/adm/wtmp")
+
+# Open the utmp file
+utmp = getutent()
+
+# Loop through the records in the utmp file
+while (utmp) {
+        # Check if the record belongs to the user we want to modify
+        if (strcmp(utmp->ut_user, "user1") == 0) {
+                # Modify the record as needed
+                strcpy(utmp->ut_user, "user2")
+                strcpy(utmp->ut_line, "pts/1")
+                utmp->ut_time = time(NULL)
+                # Update the record in the utmp file
+                setutent()
+        }
+        # Get the next record in the utmp file
+        utmp = getutent()
+}
+
+# Close the utmp file
+endutent()
+
+This example reads the utmp file, searches for a record with the username user1, and modifies the username and terminal name in the record to user2 and pts/1, respectively. It also updates the login time to the current time.
+
+Keep in mind that this is just a basic example, and you may need to modify it to suit your specific needs. You should also be careful when modifying the utmp file, as any errors or inconsistencies in the file can cause problems with the system and with other programs that rely on the utmp file.
