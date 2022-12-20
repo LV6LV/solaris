@@ -1,3 +1,4 @@
+#!/bin/bash
 # Include the utmpx library
 . /usr/include/utmpx.h
 
